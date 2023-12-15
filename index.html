@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L1 Consultoria</title>
+
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="src/images/logo.png" alt="Logo">
+            <h3>L1 Consultoria</h3>
+        </div>
+    </nav>
+    <main class="container">
+        <a href="/zabbix" target="_blank">
+            <img src="src/images/zabbix-icon.svg" alt="Zabbix">
+        </a>
+        <a id="linkGrafana" target="_blank">
+            <img src="src/images/grafana-icon.svg" alt="Grafana">
+        </a>
+    </main>
+    <footer>
+        <h3><a href="mailto:contato@l1consultoria.com.br?subject=Contato via weblink">contato@l1consultoria.com.br</a></h3>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const hostname = window.location.hostname;
+            const link = document.getElementById('linkGrafana');
+            link.href = `http://${hostname}:3000/`;
+        });
+    </script>    
+</body>
+</html>
