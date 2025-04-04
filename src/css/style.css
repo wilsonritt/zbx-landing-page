@@ -32,7 +32,7 @@ nav .logo {
 }
 
 nav .logo img {
-  height: 75px;
+  height: 100px;
 }
 
 nav .logo h3 {
@@ -57,8 +57,8 @@ nav .logo h3 {
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .container a:hover {
