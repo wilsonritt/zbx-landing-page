@@ -15,32 +15,54 @@
             <h3>L1 Consultoria</h3>
         </div>
     </nav>
+
     <main class="container">
         <a href="/zabbix" target="_blank">
             <img src="src/images/zabbix-icon.svg" alt="Zabbix">
         </a>
+
         <a id="linkGrafana" target="_blank">
             <img src="src/images/grafana-icon.svg" alt="Grafana">
         </a>
+
         <a id="linkSnmpMonitor" target="_blank">
             <img src="src/images/snmp-monitoring.png" alt="SNMP Monitoring">
         </a>
     </main>
+
     <footer>
-        <h3><a href="mailto:contato@l1consultoria.com.br?subject=Contato via weblink">contato@l1consultoria.com.br</a></h3>
+        <h3>
+            <a href="mailto:contato@l1consultoria.com.br?subject=Contato via weblink">
+                contato@l1consultoria.com.br
+            </a>
+        </h3>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             const hostname = window.location.hostname;
-            const link = document.getElementById('linkGrafana');
-            link.href = `http://${hostname}:3000/`;
+            const parts = hostname.split('.');
+
+            let baseDomain;
+            if (
+                parts.length >= 3 &&
+                ['com', 'net', 'org'].includes(parts[parts.length - 2]) &&
+                parts[parts.length - 1] === 'br'
+            ) {
+                baseDomain = parts.slice(-3).join('.');
+            } else {
+                baseDomain = parts.slice(-2).join('.');
+            }
+
+            const grafanaHost = `graficos.${baseDomain}`;
+            const snmpHost = `snmp.${baseDomain}`;
+
+            const grafanaLink = document.getElementById('linkGrafana');
+            const snmpLink = document.getElementById('linkSnmpMonitor');
+
+            grafanaLink.href = `https://${grafanaHost}/`;
+            snmpLink.href = `https://${snmpHost}/`;
         });
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const hostname = window.location.hostname;
-            const link = document.getElementById('linkSnmpMonitor');
-            link.href = `http://${hostname}:8080/`;
-        });
-    </script>    
+    </script>
 </body>
 </html>
